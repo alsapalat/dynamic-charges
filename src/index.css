@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+input, select, textarea {
+  @apply focus:outline-none bg-yellow-100 disabled:opacity-50 disabled:bg-gray-100 disabled:text-gray-600;
+  @apply w-full border;
+}
+
+.table td,
+.table th {
+   @apply border
+}
+
+button {
+  @apply text-center w-full font-semibold underline text-blue-600
+}
