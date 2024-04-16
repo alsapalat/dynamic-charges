@@ -28,7 +28,7 @@ type TRate = {
 }
 
 function totalRange(items: TRate['items']) {
-  return items.filter((x, i) => i < items.length - 1).reduce((a, x) => a + +x.range, 0);
+  return items.filter((_, i) => i < items.length - 1).reduce((a, x) => a + +x.range, 0);
 }
 
 function RateTables({
@@ -53,7 +53,7 @@ function RateTables({
   const handleRemoveItem = (row: number, index: number) => () => {
     onChange(value.map((x, i) => row === i ? {
       ...x,
-      items: x.items.filter((y, j) => j !== index),
+      items: x.items.filter((_, j) => j !== index),
     } : x))
   }
   return (
@@ -72,7 +72,7 @@ function RateTables({
                   }}>[Rename]</button>
                   <button type="button" onClick={() => {
                     if (!confirm('Are you sure you want to delete?')) return;
-                    onChange(value.filter((x, j) => j !== i))
+                    onChange(value.filter((_, j) => j !== i))
                   }}>[X]</button>
                 </div>
               </div>
@@ -150,7 +150,7 @@ function Charges({
   rateTableOptions: TRate[]
 }) {
   const handleRemoveItem = (index: number) => () => {
-    onChange(value.filter((y, j) => j !== index))
+    onChange(value.filter((_, j) => j !== index))
   }
   return (
     <div>
@@ -436,7 +436,7 @@ function Datasets({
                       </td>
                       <td>
                         <button type="button" onClick={() => {
-                          onChange(value.filter((x, j) => j !== row.index));
+                          onChange(value.filter((_, j) => j !== row.index));
                         }}>[X]</button>
                       </td>
                     </tr>

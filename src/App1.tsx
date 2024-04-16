@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Children, useCallback, useMemo, useState } from "react"
 
 type TCharges = {
@@ -175,7 +177,7 @@ function App() {
                       )}
                       <button className="flex-shrink-0 w-auto px-2" type="button" onClick={() => {
                         // if (!confirm("Remove charge?")) return;
-                        setCharges(charges.filter((x, j) => j !== i));
+                        setCharges(charges.filter((_, j) => j !== i));
                       }}>X</button>
                     </div>
                   </td>
@@ -204,7 +206,7 @@ function App() {
                       <label className="mb-1 text-sm font-semibold">&nbsp;</label>
                       <button className="flex-shrink-0 w-auto px-2" type="button" onClick={() => {
                         // if (!confirm("Remove charge?")) return;
-                        setMatrix(matrix.filter((x, j) => j !== i));
+                        setMatrix(matrix.filter((_, j) => j !== i));
                       }}>X</button>
                     </div>
                     <input className="w-full" onChange={(e) => {
@@ -242,7 +244,7 @@ function App() {
                                   // if (!confirm("Remove charge?")) return;
                                   setMatrix(matrix.map((x, k) => k === i ? ({
                                     ...x,
-                                    items: (x.items || []).filter((x, l) => k !== l)
+                                    items: (x.items || []).filter((_, l) => k !== l)
                                   }) : x))
                                 }}>X</button>
                               </div>
